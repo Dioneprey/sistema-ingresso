@@ -54,6 +54,10 @@ export class EventsController {
     @Body() request: ReserveSpotRequest,
     @Param('id') eventId: string,
   ) {
-    return this.eventsService.reserveSpot({ ...request, eventId })
+    return this.eventsService.reserveSpot({
+      ...request,
+      ticketKind: request.ticket_kind,
+      eventId,
+    })
   }
 }

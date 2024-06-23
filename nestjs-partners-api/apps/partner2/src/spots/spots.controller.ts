@@ -21,7 +21,7 @@ export class SpotsController {
     @Param('eventId') eventId: string,
   ) {
     return this.spotsService.create({
-      ...createSpotRequest,
+      name: createSpotRequest.nome,
       eventId,
     })
   }
@@ -42,7 +42,9 @@ export class SpotsController {
     @Param('eventId') eventId: string,
     @Body() updateSpotRequest: UpdateSpotRequest,
   ) {
-    return this.spotsService.update(eventId, spotId, updateSpotRequest)
+    return this.spotsService.update(eventId, spotId, {
+      name: updateSpotRequest.nome,
+    })
   }
 
   @Delete(':spotId')

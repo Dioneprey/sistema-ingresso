@@ -61,6 +61,6 @@ X-Api-Token: partner1
 
 {
   "spots": [ "{{spotName}}" ],
-  "ticketKind": "full",
+  "ticket_kind": "full",
   "email": "test@test.com"
 }

@@ -1,6 +1,6 @@
 export class CreateEventRequest {
-  name: string
-  description: string
-  date: string
-  price: number
+  nome: string
+  descricao: string
+  data: string
+  preco: number
 }

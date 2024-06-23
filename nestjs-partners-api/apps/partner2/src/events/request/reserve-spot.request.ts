@@ -1,7 +1,5 @@
-import { TicketKind } from '@prisma/client'
-
 export class ReserveSpotRequest {
-  spots: string[]
-  ticketKind: TicketKind
+  lugares: string[]
+  tipo_ingresso: 'inteira' | 'meia'
   email: string
 }

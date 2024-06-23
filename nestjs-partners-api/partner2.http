@@ -6,11 +6,12 @@ POST http://localhost:3001/events
 Content-Type: application/json
 
 {
-  "name": "New event",
-  "date": "2017-01-01T00:00:00",
-  "price": 100,
-  "description": "This is a new event"
+  "nome": "Evento 1",
+  "descricao": "Evento 1 descricao",
+  "data": "2024-06-02T10:23:14",
+  "preco": 100.10
 }
+
 
 ### 
 @eventId = {{ createEvent.response.body.id }}
@@ -23,11 +24,12 @@ PATCH http://localhost:3001/events/{{eventId}}
 Content-Type: application/json
 
 {
-  "name": "Edited event",
-  "date": "2017-01-01T00:00:00",
-  "price": 100,
-  "description": "This is a edited event"
+  "nome": "Evento 1 Editado",
+  "descricao": "Evento 1 descricao Editada",
+  "data": "2024-06-02T10:23:14",
+  "preco": 100.10
 }
+
 
 ###
 DELETE http://localhost:3001/events/{{eventId}}
@@ -45,7 +47,7 @@ POST http://localhost:3001/events/{{eventId}}/spots
 Content-Type: application/json
 
 {
-  "name": "A1"
+  "nome": "A1"
 }
 
 ### 
@@ -60,7 +62,7 @@ Content-Type: application/json
 X-Api-Token: partner2
 
 {
-  "spots": [ "{{spotName}}" ],
-  "ticketKind": "full",
-  "email": "test@test.com"
+  "lugares": ["{{spotName}}"],
+  "tipo_ingresso": "inteira",
+  "email": "user1@test.com"
 }
