@@ -3,6 +3,7 @@
 import { PropsWithChildren } from "react";
 import { useFormState } from "react-dom";
 import { ErrorMessage } from "../../components/ErrorMessage";
+import { checkoutAction } from "@/actions";
 
 export async function getCardHash({ cardName, cardNumber, expireDate, cvv }) {
   return Math.random().toString(36).substring(7);
@@ -14,9 +15,9 @@ export type CheckoutFormProps = {
 
 export function CheckoutForm(props: PropsWithChildren<CheckoutFormProps>) {
 
-//   const [state, formAction] = useFormState(checkoutAction, {
-//     error: null as string | null,
-//   });
+  const [state, formAction] = useFormState(checkoutAction, {
+    error: null as string | null,
+  });
 
   return (
     <form
@@ -27,14 +28,14 @@ export function CheckoutForm(props: PropsWithChildren<CheckoutFormProps>) {
           expireDate: formData.get("expire_date") as string,
           cvv: formData.get("cvv") as string,
         });
-        // formAction({
-        //   cardHash: card_hash,
-        //   email: formData.get("email") as string,
-        // });
+        formAction({
+          cardHash: card_hash,
+          email: formData.get("email") as string,
+        });
       }}
       className={props.className}
     >
-      {/* {state?.error && <ErrorMessage error={state.error} />} */}
+      {state?.error && <ErrorMessage error={state.error} />}
       <input type="hidden" name="card_hash" />
       {props.children}
     </form>
