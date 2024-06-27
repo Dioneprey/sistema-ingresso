@@ -41,7 +41,7 @@ app.get("/events/:eventId/spots", async (req, res) => {
 
 app.post("/checkout", async (req, res) => {
   const { event_id, card_hash, ticket_kind, spots: spotsName, email } = req.body;
-  console.log(req.body);
+  
   const event = events.find((event) => event.id == event_id);
   if (!event) {
     return res.status(404).json({

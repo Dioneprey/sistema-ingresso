@@ -4,6 +4,7 @@ import { EventModel, SpotModel } from "@/models"
 import Link from "next/link"
 import { TicketKindSelect } from "./TicketKindSelect"
 import { cookies } from "next/headers"
+import { EventImage } from "@/components/EventImage"
 
 export async function getSpots(eventId: string): Promise<{
     event: EventModel
@@ -75,10 +76,15 @@ export default async function SpotsLayoutPage({ params }: { params: { eventId: s
         currency: "BRL",
       }).format(totalPrice)
 
+    const formattedHalfPrice = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    }).format(totalPrice / 2)
+
     return (
         <main className="mt-10">
             <div className="flex w-[1176px] max-w-full flex-row flex-wrap justify-center gap-x-8 rounded-2xl bg-secondary p-4 md:justify-normal">
-                <img src={event.image_url} alt="" />
+            <EventImage src={event.image_url} alt={event.name} />
                 <div className="flex max-w-full flex-col gap-y-6">
                     <div className="flex flex-col gap-y-2 ">
                         <p className="text-sm font-semibold uppercase text-subtitle">
@@ -157,8 +163,8 @@ export default async function SpotsLayoutPage({ params }: { params: { eventId: s
                         Confira os valores do evento
                     </h1>
                     <p>
-                        Inteira: {"R$ 100,00"} <br />
-                        Meia-entrada: {`R$ 50,00`}
+                        Inteira: {formattedTotalPrice} <br />
+                        Meia-entrada: {formattedHalfPrice}
                     </p>
                     <div className="flex flex-col">
                         <TicketKindSelect
